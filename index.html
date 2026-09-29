@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CARVAN - Online Car Marketplace Pakistan</title>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f2f3;
+    color: #333;
+  }
+  .logo-img {
+    height: 40px;
+    margin-right: 10px;
+  }
+  /* Hero */
+  .hero-section {
+   background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+            url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+
+    color: #fff;
+    padding: 100px 20px;
+    text-align: center;
+  }
+  .hero-overlay {
+    background-color: rgba(0,0,0,0.4);
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 800px;
+    margin: auto;
+  }
+  /* Sections */
+  section {
+    padding: 60px 20px;
+  }
+  #about { background-color: #e0e0e0; }
+  #preowned { background-color: #f8f9fa; }
+  #story { background-color: #f8f9fa; }
+  h2 { color: #d32f2f; }
+  .btn-primary {
+    background-color: #d32f2f;
+    border-color: #d32f2f;
+  }
+  .btn-primary:hover {
+    background-color: #b71c1c;
+  }
+  .car-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .car-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+  #category-buttons {
+    margin-bottom: 20px;
+  }
+  #category-buttons .btn {
+    margin: 5px;
+  }
+  /* Footer */
+  .footer-black {
+    background-color: #000;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#home" onclick="scrollToSection('home')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH608Z5vbTHuLHNpUypIVR-F8w4a8b37DoGw&s" class="logo-img" alt="Logo" />
+      <span class="fw-bold text-danger">CARVAN</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#about" onclick="scrollToSection('about')">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="#brand-buttons" onclick="scrollToSection('brand-buttons')">Brands</a></li>
+        <li class="nav-item"><a class="nav-link" href="#range" onclick="scrollToSection('range')">Range of Cars</a></li>
+        <li class="nav-item"><a class="nav-link" href="#preowned" onclick="scrollToSection('preowned')">Pre-Owned Cars</a></li>
+        <li class="nav-item"><a class="nav-link" href="#category" onclick="scrollToSection('category')">Categories</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact" onclick="scrollToSection('contact')">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="hero-section d-flex justify-content-center align-items-center">
+  <div class="hero-overlay text-center">
+    <h1 class="mb-3">Welcome to CARVAN!</h1>
+    <p class="lead mb-4">Find Your Dream Car in Pakistan</p>
+    <a href="#range" class="btn btn-primary btn-lg" onclick="scrollToSection('range')">Explore Cars</a>
+  </div>
+</section>
+
+<!-- About Us -->
+<section id="about">
+  <div class="container">
+    <h2 class="text-center mb-4">About Us</h2>
+    <p class="text-center" style="max-width:700px; margin:auto;">
+      CARVAN is Pakistan's leading online platform for buying and selling cars. With years of experience, we connect enthusiasts with their dream vehicles. Our mission is to provide a transparent, trustworthy, and seamless marketplace.
+    </p>
+    <h4 class="mt-4">Past & Upcoming Events</h4>
+    <ul>
+      <li><strong>Past Event:</strong> Annual Car Expo 2023 showcased the latest models.</li>
+      <li><strong>Upcoming Event:</strong> AutoTech Pakistan 2026 scheduled for March 2026.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Brand Buttons on page -->
+<section id="brand-buttons" class="py-4 bg-light">
+  <div class="container" id="brand-buttons-container">
+    <h3 class="text-center mb-4">Our Brands</h3>
+    <div class="d-flex flex-wrap justify-content-center">
+      <button class="btn btn-outline-danger" onclick="scrollToSection('toyota')">Toyota</button>
+      <button class="btn btn-outline-danger" onclick="scrollToSection('honda')">Honda</button>
+      <button class="btn btn-outline-danger" onclick="scrollToSection('ford')">Ford</button>
+      <button class="btn btn-outline-danger" onclick="scrollToSection('bmw')">BMW</button>
+    </div>
+  </div>
+</section>
+
+<!-- Range Filter -->
+<section id="range">
+  <div class="container text-center mb-4">
+    <h2>Filter Cars by Price Range</h2>
+    <div id="rangeContainer" class="mt-3">
+      <input type="range" class="form-range" min="500000" max="2000000" step="50000" id="priceRange" />
+      <p>Selected Range: <span id="rangeValue">Rs. 500,000 - Rs. 2,000,000</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- Car Category Buttons with all in red -->
+<section id="category" class="py-4 bg-light">
+  <div class="container text-center" id="category-buttons">
+    <h3 class="mb-3">Filter by Category</h3>
+    <button class="btn btn-danger" onclick="filterByCategory('all')">All</button>
+    <button class="btn btn-danger" onclick="filterByCategory('small')">Small</button>
+    <button class="btn btn-danger" onclick="filterByCategory('sedan')">Sedan</button>
+    <!-- Make the Jeep category button red -->
+    <button class="btn btn-danger" onclick="filterByCategory('jeeps')">Jeep</button>
+    <button class="btn btn-danger" onclick="filterByCategory('van')">Van</button>
+  </div>
+</section>
+
+<!-- Cars grouped by brand -->
+<div class="container" id="cars-section">
+  <!-- Toyota -->
+  <section id="toyota">
+    <h3 class="text-center mb-4">Toyota</h3>
+    <div class="row g-4" id="toyota-cars"></div>
+  </section>
+  <!-- Honda -->
+  <section id="honda">
+    <h3 class="text-center mb-4">Honda</h3>
+    <div class="row g-4" id="honda-cars"></div>
+  </section>
+  <!-- Ford -->
+  <section id="ford">
+    <h3 class="text-center mb-4">Ford</h3>
+    <div class="row g-4" id="ford-cars"></div>
+  </section>
+  <!-- BMW -->
+  <section id="bmw">
+    <h3 class="text-center mb-4">BMW</h3>
+    <div class="row g-4" id="bmw-cars"></div>
+  </section>
+</div>
+
+<!-- Pre-Owned Cars with 5 Cars and Stories -->
+<section id="preowned" class="py-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">Pre-Owned Cars & Stories</h2>
+    <div class="row g-4">
+      <!-- Car 1 -->
+      <div class="col-md-6">
+        <div class="card h-100" style="background-color:#fff;">
+          <img src="https://di-uploads-pod3.dealerinspire.com/germainhondaofannarbor/uploads/2022/06/22-Honda-HRV.jpg" class="card-img-top" alt="Pre-Owned SUV" />
+          <div class="card-body">
+            <h5 class="card-title">Pre-Owned SUV</h5>
+            <p>"HR-V: Ravi took this SUV on countless mountain adventures. It’s reliable and built for thrill-seekers."</p>
+          </div>
+        </div>
+      </div>
+      <!-- Car 2 -->
+      <div class="col-md-6">
+        <div class="card h-100" style="background-color:#fff;">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVY7kcwzVnnqzCp5uQvprM70v0raTUjCXJIQ&s" class="card-img-top" alt="Pre-Owned Sedan" />
+          <div class="card-body">
+            <h5 class="card-title">Pre-Owned Sedan</h5>
+            <p>"Corolla: City commutes are a breeze with this sleek sedan. It’s been pampered and runs smoothly."</p>
+          </div>
+        </div>
+      </div>
+      <!-- Car 3 -->
+      <div class="col-md-6">
+        <div class="card h-100" style="background-color:#fff;">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4Whvdyvu30hiQFD93JRCGORJcmhtSHn6Mdw&s" class="card-img-top" alt="Pre-Owned Hatchback" />
+          <div class="card-body">
+            <h5 class="card-title">Pre-Owned Hatchback</h5>
+            <p>"Ford Fiesta: Perfect for city life, this hatchback has seen many adventures and still drives like new."</p>
+          </div>
+        </div>
+      </div>
+      <!-- Car 4 -->
+      <div class="col-md-6">
+        <div class="card h-100" style="background-color:#fff;">
+          <img src="https://i.ytimg.com/vi/qziwS6DSCtM/sddefault.jpg" class="card-img-top" alt="Pre-Owned Van" />
+          <div class="card-body">
+            <h5 class="card-title">Pre-Owned Van</h5>
+            <p>"Toyota Hilux: Ideal for family trips, this van has been trusted for years and is still going strong."</p>
+          </div>
+        </div>
+      </div>
+      <!-- Car 5 -->
+      <div class="col-md-6">
+        <div class="card h-100" style="background-color:#fff;">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw0Btvz1HNMTSThiA2pfQerMm6LoICaccC-Q&s" class="card-img-top" alt="Pre-Owned Convertible" />
+          <div class="card-body">
+            <h5 class="card-title">Pre-Owned Convertible</h5>
+            <p>"BMw Z4: A fun ride for sunny days, this convertible has a story of weekend getaways and joyful drives."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">Contact Us</h2>
+    <div class="mx-auto p-4 border bg-white rounded" style="max-width:600px;">
+      <form id="contactForm">
+        <div class="mb-3">
+          <label class="form-label" for="name">Name</label>
+          <input class="form-control" type="text" id="name" placeholder="Your Name" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-control" type="email" id="email" placeholder="Your Email" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="phone">Phone</label>
+          <input class="form-control" type="tel" id="phone" placeholder="Your Phone" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="message">Message</label>
+          <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required></textarea>
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer with black background and white text -->
+<footer class="text-center footer-black py-3">
+  <div class="container">
+    <p style="margin:0;">Email: info@carvanpk.com | Phone: +92-335-3772813</p>
+    <p style="margin:0;">&copy; 2025 CARVAN, Pakistan</p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const cars = {
+  toyota: [
+    { name: "Toyota Corolla", color: "Graphite", price: 1500000, km: 30000, year: 2019, type: "sedan", image: "https://cache1.pakwheels.com/ad_pictures/1215/toyota-corolla-altis-1-6-automatic-2019-121539225.webp" },
+    { name: "Toyota Hilux", color: "Grey", price: 2500000, km: 40000, year: 2018, type: "van", image: "https://professionalvan.com/wp-content/uploads/2024/08/Toyota-Hilux-Facelift-2024-Professional-Pickup-01.webp" },
+    { name: "Toyota Camry", color: "Grey", price: 3500000, km: 25000, year: 2020, type: "sedan", image: "https://hips.hearstapps.com/hmg-prod/images/2025-toyota-camry-xse-awd-123-66993cc94cc40.jpg?crop=0.676xw:0.506xh;0.101xw,0.399xh&resize=1200:*" },
+    { name: "Toyota Prius", color: "Green", price: 4000000, km: 25000, year: 2020, type: "small", image: "https://img.autocarpro.in/autocarpro/IMG/968/57968/prius-3.jpg" },
+    { name: "Toyota Vios", color: "Blue", price: 1800000, km: 35000, year: 2019, type: "small", image: "https://itp1.itopfile.com/ImageServer/z_itp_21042021jnto/0/0/3z-z518000374221.webp" }
+  ],
+  honda: [
+    { name: "Honda Civic", color: "Red", price: 2800000, km: 28000, year: 2020, type: "sedan", image: "https://carsguide.bikroy.com/wp-content/uploads/2023/05/Honda-Civic-Featured-image-e1689756948404.jpeg" },
+    { name: "Honda Accord", color: "Silver", price: 3200000, km: 22000, year: 2021, type: "sedan", image: "https://cache3.pakwheels.com/ad_pictures/1210/tn_honda-accord-2013-121039978.webp" },
+    { name: "Honda City", color: "Blue", price: 2000000, km: 40000, year: 2022, type: "small", image: "https://www.samaa.tv/images/honda-city-2023-price.png" },
+    { name: "Honda Jazz", color: "Red", price: 2500000, km: 40000, year: 2017, type: "small", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwDuXkK0t4PgsRZx8B10jqaEf7sZWrXajmLA&s" },
+    { name: "Honda HR-V", color: "Black", price: 2900000, km: 30000, year: 2019, type: "small", image: "https://assets.conexa.r-e-d.co.za/images/a66c002f-5247-45ce-a752-e487b3874e31default.webp" }
+  ],
+  ford: [
+    { name: "Ford Fiesta", color: "Blue", price: 1500000, km: 35000, year: 2018, type: "small", image: "https://b1933909.smushcdn.com/1933909/wp-content/uploads/2022/12/shutterstock_21956921471920px.jpg?lossy=1&strip=1&webp=0" },
+    { name: "Ford Focus", color: "White", price: 2000000, km: 30000, year: 2019, type: "sedan", image: "https://static0.carbuzzimages.com/wordpress/wp-content/uploads/2024/03/474001-17.jpg" },
+    { name: "Ford Explorer", color: "Black", price: 7500000, km: 25000, year: 2020, type: "jeeps", image: "https://www.spiritford.com/static/dealer-23206/Aronson/2025/Explorer/25Ford-Explorer-ExteriorParkedByLake-21x9.jpg" },
+    { name: "Ford Mustang", color: "Red", price: 8500000, km: 15000, year: 2021, type: "sedan", image: "https://img-ik.cars.co.za/news-site-za/images/2024/09/FordMustang2024_003.jpg" },
+    { name: "Ford Ranger", color: "Green", price: 3000000, km: 20000, year: 2019, type: "van", image: "https://www.motortrend.com/files/67f47f669ec43500096d30b5/2026fordrangersuperdutypickuptruckaustraliaheavyduty-37.jpg?w=768&width=768&q=75&format=webp" },
+    // Added Jeep
+    { name: "Jeep Grand Cherokee", color: "Black", price: 7500000, km: 22000, year: 2021, type: "jeeps", image: "https://images.unsplash.com/photo-1606791383871-9e9e7a8d0314" }
+  ],
+  bmw: [
+    { name: "BMW X3", color: "Silver", price: 40000000, km: 12000, year: 2021, type: "van", image: "https://i.ytimg.com/vi/pIGr4euT1iY/maxresdefault.jpg" },
+    { name: "BMW Series 3", color: "Black", price: 35000000, km: 15000, year: 2020, type: "sedan", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvqpChPosWXhna34k6zWxSQ6Rq3qugmSm8CQ&s" },
+    { name: "BMW X5", color: "White", price: 60000000, km: 10000, year: 2022, type: "jeeps", image: "https://media.drive.com.au/obj/tx_q:50,rs:auto:1920:1080:1/caradvice/private/9c5be939dd4f51af7001f04249459268" },
+    { name: "BMW Z4", color: "Red", price: 50000000, km: 8000, year: 2021, type: "small", image: "https://c.ndtvimg.com/o2btcu18_new-2019-bmw-z4_625x300_25_August_18.jpg" },
+    { name: "BMW M3", color: "Blue", price: 70000000, km: 5000, year: 2022, type: "small", image: "https://richmonds.com.au/wp-content/uploads/2023/02/BMW-M3-Blue-4.jpg" }
+  ]
+};
+
+let currentCategory = 'all';
+
+function displayBrandCars(brandId, carsArray) {
+  const container = document.getElementById(brandId + '-cars');
+  container.innerHTML = '';
+
+  const minPrice = parseInt(document.getElementById('priceRange').value);
+  let filteredCars = carsArray.filter(c => c.price >= minPrice);
+  if (currentCategory !== 'all') {
+    filteredCars = filteredCars.filter(c => c.type === currentCategory);
+  }
+
+  filteredCars.slice(0, 5).forEach(car => {
+    const col = document.createElement('div');
+    col.className = 'col-md-4';
+    col.innerHTML = `
+      <div class="card h-100" style="background-color:#fff;">
+        <img src="${car.image}" class="card-img-top" alt="${car.name}">
+        <div class="card-body">
+          <h5 class="card-title">${car.name}</h5>
+          <p>Reliable, fuel-efficient, perfect for city drives.</p>
+          <ul class="list-unstyled small">
+            <li><strong>Color:</strong> ${car.color}</li>
+            <li><strong>Price:</strong> Rs. ${car.price.toLocaleString()}</li>
+            <li><strong>KMs:</strong> ${car.km}</li>
+            <li><strong>Year:</strong> ${car.year}</li>
+          </ul>
+        </div>
+      </div>`;
+    container.appendChild(col);
+  });
+}
+
+function displayAllBrands() {
+  for (const brand in cars) {
+    displayBrandCars(brand, cars[brand]);
+  }
+}
+
+function filterByPrice() {
+  document.getElementById('rangeValue').innerText = `Rs. ${parseInt(document.getElementById('priceRange').value).toLocaleString()} - Rs. 2,000,000`;
+  for (const brand in cars) {
+    displayBrandCars(brand, cars[brand]);
+  }
+}
+
+function filterByCategory(category) {
+  currentCategory = category;
+  document.querySelectorAll('#category-buttons .btn').forEach(btn => {
+    if (category === 'all' && btn.innerText.toLowerCase() === 'all') {
+      btn.classList.add('active');
+    } else if (btn.innerText.toLowerCase() === category) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+  for (const brand in cars) {
+    displayBrandCars(brand, cars[brand]);
+  }
+}
+
+window.onload = () => {
+  document.getElementById('rangeValue').innerText = `Rs. ${parseInt(document.getElementById('priceRange').value).toLocaleString()} - Rs. 2,000,000`;
+  displayAllBrands();
+  document.getElementById('priceRange').addEventListener('input', filterByPrice);
+  document.querySelectorAll('#category-buttons .btn').forEach(btn => {
+    if (btn.innerText.toLowerCase() === 'all') {
+      btn.classList.add('active');
+    }
+    btn.onclick = () => {
+      filterByCategory(btn.innerText.toLowerCase());
+    };
+  });
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.onclick = e => {
+      e.preventDefault();
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        scrollToSection(href.substring(1));
+      }
+    };
+  });
+};
+
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({behavior: 'smooth'});
+}
+</script>
+</body>
+</html>
